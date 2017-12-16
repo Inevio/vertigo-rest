@@ -1,5 +1,5 @@
 {
-  "name": "vertigo",
+  "name": "vertigo-rest",
   "description": "Simple communication between Node.js processes",
   "main": "./lib/vertigo",
   "author": "Javier Garmon at Inevio Inc",
