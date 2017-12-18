@@ -40,7 +40,7 @@ This module doesn't have the same features of his parent but still it has the ma
   var vertigo = require('vertigo-rest');
 
 // Create client
-  var client = vertigo.createClient( 'localhost:8000' );
+  var client = vertigo.createClient( 'http://localhost:8000' );
 
 // Make a petition
   client.request( 'hello', 'John', function( error, response ){
@@ -69,7 +69,7 @@ This module doesn't have the same features of his parent but still it has the ma
   var vertigo = require('vertigo-rest');
 
 // Create client
-  var client = vertigo.createClient( 'localhost:8000' );
+  var client = vertigo.createClient( 'http://localhost:8000' );
 
 // Make a petition
   client.send( 'hello', 'John' );
