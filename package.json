@@ -3,7 +3,7 @@
   "description": "Simple communication between Node.js processes",
   "main": "./lib/vertigo",
   "author": "Javier Garmon at Inevio Inc",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/Inevio/vertigo-rest.git"
