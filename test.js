@@ -25,17 +25,17 @@ server.on('tooSlow', name => new Promise(resolve => setTimeout(() => resolve(`Hi
 
 describe('request', () => {
   it('Reply returning a primitive', async () => {
-    const [reply] = await client.request('simple', 'John')
+    const reply = await client.request('simple', 'John')
     reply.should.be.equals('Hi John')
   })
 
   it('Reply returning a promise', async () => {
-    const [reply] = await client.request('promise', 'John')
+    const reply = await client.request('promise', 'John')
     reply.should.be.equals('Hi John')
   })
 
   it('Reply returning using async/await', async () => {
-    const [reply] = await client.request('async/await', 'John')
+    const reply = await client.request('async/await', 'John')
     reply.should.be.equals('Hi John')
   })
 
@@ -55,7 +55,7 @@ describe('request', () => {
 
   it('Reply a request with multiple arguments', async () => {
     const time = new Date()
-    const [reply] = await client.request('multiple', 'John', time.getTime())
+    const reply = await client.request('multiple', 'John', time.getTime())
     reply.should.be.equals(`Hi John at ${time.toString()}`)
   })
 
