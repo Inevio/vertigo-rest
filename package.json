@@ -3,7 +3,7 @@
   "description": "Simple communication between Node.js processes",
   "main": "./lib/vertigo",
   "author": "Javier Garmon at Inevio Inc",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Inevio/vertigo-rest.git"
@@ -22,9 +22,10 @@
   },
   "dependencies": {
     "async": "2.6.1",
+    "axios": "0.18.0",
+    "bluebird": "3.5.1",
     "body-parser": "1.18.3",
-    "express": "4.16.3",
-    "request": "2.87.0"
+    "express": "4.16.3"
   },
   "devDependencies": {
     "chai": "4.1.2",

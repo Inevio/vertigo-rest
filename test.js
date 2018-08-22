@@ -25,44 +25,51 @@ server.on('tooSlow', name => new Promise(resolve => setTimeout(() => resolve(`Hi
 
 describe('request', () => {
   it('Reply returning a primitive', async () => {
-    const reply = await client.request('simple', 'John')
+    const reply = await client.request({name: 'simple', data: 'John'})
     reply.should.be.equals('Hi John')
   })
 
   it('Reply returning a promise', async () => {
-    const reply = await client.request('promise', 'John')
+    const reply = await client.request({name: 'promise', data: 'John'})
     reply.should.be.equals('Hi John')
   })
 
   it('Reply returning using async/await', async () => {
-    const reply = await client.request('async/await', 'John')
+    const reply = await client.request({name: 'async/await', data: 'John'})
     reply.should.be.equals('Hi John')
   })
 
   it('Catch a simple error', async () => {
     try {
-      await client.request('error')
-      throw 'Error not received'
+      await client.request({name: 'error'})
+      throw new Error('Error not received')
     } catch (err) { err.message.toString().should.be.equals('Generic error') }
   })
 
   it('Catch a throwed error', async () => {
     try {
-      await client.request('throw')
-      throw 'Error not received'
+      await client.request({name: 'throw'})
+      throw new Error('Error not received')
     } catch (err) { err.message.toString().should.be.equals('Throwed error') }
+  })
+
+  it('Catch a not found endpoint', async () => {
+    try {
+      await client.request({name: '404'})
+      throw new Error('Error not received')
+    } catch (err) { err.message.toString().should.be.equals('Request failed with status code 404') }
   })
 
   it('Reply a request with multiple arguments', async () => {
     const time = new Date()
-    const reply = await client.request('multiple', 'John', time.getTime())
+    const reply = await client.request({name: 'multiple', data: ['John', time.getTime()]})
     reply.should.be.equals(`Hi John at ${time.toString()}`)
   })
 
   it('Fail a request too slow', async () => {
     try {
-      await client.request('tooSlow', 'John')
-      throw 'Error not received'
-    } catch (err) { err.message.toString().should.be.equals('SERVER UNAVAILABLE') }
+      await client.request({name: 'tooSlow', data: 'John'})
+      throw new Error('Error not received')
+    } catch (err) { err.message.toString().should.be.equals('timeout of 100ms exceeded') }
   })
 })
